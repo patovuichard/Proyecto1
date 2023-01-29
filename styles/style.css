@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 600px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 50px 0px 50px;
+    /* height: 100vh; */
+}
+
+#start-btn, #restart-btn, #pause-btn {
+    background-color: rgba(108, 230, 235, 0.8);
+    color: rgba(255, 254, 207, 1);
+    padding: 10px;
+    font-size: 25px;
+    margin-top: 40px;
+    border-radius: 20px; 
+}
+
+#pause-btn {
+    display: none;
+}
+
+#mi-canvas {
+    /* background-color: black; */
+    display: none;
+}
+
+#reinicio {
+    display: none;
+}
