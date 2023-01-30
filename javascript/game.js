@@ -174,11 +174,12 @@ class Game {
         // 1. Detener la recursion
         this.estaJugando = false;
         this.juegoTerminado = true;
+        
         // 2. Ocultar el canvas
-        canvas.style.display = "none";
+        gameDOM.style.display = "none";
+        
         // 3. Mostrar la pantalla final
         resetGameDOM.style.display  = "flex";
-        pauseDOM.style.display = "none";
     }
 
 

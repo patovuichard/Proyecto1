@@ -13,10 +13,23 @@ body {
     justify-content: center;
     align-items: center;
     margin: 30px 50px 0px 50px;
-    /* height: 100vh; */
 }
 
-#start-btn, #restart-btn, #pause-btn {
+#start-btn, #restart-btn {
+    background-color: rgba(108, 230, 235, 0.8);
+    color: rgba(255, 254, 207, 1);
+    padding: 10px;
+    font-size: 25px;
+    margin-top: 40px;
+    border-radius: 20px;
+    position: absolute;
+    top: 500px;
+}
+
+#pause-btn {
+    position: absolute;
+    top: 45px;
+    right: 330px;
     background-color: rgba(108, 230, 235, 0.8);
     color: rgba(255, 254, 207, 1);
     padding: 10px;
@@ -25,12 +38,7 @@ body {
     border-radius: 20px; 
 }
 
-#pause-btn {
-    display: none;
-}
-
-#mi-canvas {
-    /* background-color: black; */
+#juego {
     display: none;
 }
 

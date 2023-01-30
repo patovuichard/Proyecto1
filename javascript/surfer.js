@@ -1,23 +1,16 @@
 class Surfer {
     // Propiedades
-    constructor() {
+    constructor(posicion) {
         this.x = 360;
         this.y = 260;
         this.w = 60;
         this.h = 60;
         this.speed = 40;
         this.energia = 10000;
-        this.posicion = "right";
+
+        this.posicion = posicion;
         this.personaje = new Image();
-        if (this.posicion === "right"){
-            this.personaje.src = "./images/surferRight.png"
-        } else if (this.posicion === "left"){
-            this.personaje.src = "./images/surferLeft.png"
-        } else if (this.posicion === "up"){
-            this.personaje.src = "./images/surferUp.png"
-        } else if (this.posicion === "down") {
-            this.personaje.src = "./images/surferDown.png"
-        }
+        this.personaje.src = "./images/surferRight.png"
     }
 
     // Metodos
@@ -27,22 +20,26 @@ class Surfer {
 
     arribaSurfer = () => {
         this.y -= this.speed;
-        this.posicion = "up";
+        // this.posicion = "up";
+        this.personaje.src = "./images/surferUp.png"
     }
 
     abajoSurfer = () => {
         this.y += this.speed;
-        this.posicion = "down";
+        // this.posicion = "down";
+        this.personaje.src = "./images/surferDown.png"
     }
 
     izquierdaSurfer = () => {
         this.x -= this.speed;
-        this.posicion = "left";
+        // this.posicion = "left";
+        this.personaje.src = "./images/surferLeft.png"
     }
 
     derechaSurfer = () => {
         this.x += this.speed;
-        this.posicion = "right";
+        // this.posicion = "right";
+        this.personaje.src = "./images/surferRight.png"
     }
 
     drawEnergia = () => {

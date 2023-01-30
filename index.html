@@ -14,11 +14,11 @@
       <!-- Pantalla inicial -->
       <div id="inicio" class="contenedor">
         <img src="./images/bg1.jpeg" width="800" alt="Inicio">
-        <button id="start-btn">Jugar!</button>
+        <button id="start-btn">Comienza a jugar!</button>
       </div>
           
       <!-- Pantalla de juego -->
-      <div class="contenedor">
+      <div id="juego" class="contenedor">
         <canvas id="mi-canvas" width="800" height="600"></canvas>
         <button id="pause-btn">Pause</button>
       </div>
@@ -30,6 +30,17 @@
       </div>
       
     </div>
+
+    <!-- <audio >
+
+    </audio> -->
+
+    <audio controls autoplay>
+      <source src="./audio/Surfin_Bird.mp3" type="audio/mpeg">
+      <source src="../audio/hell-yeah.mp3" type="audio/mpeg">
+      <source src="../audio/yeah.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
 
     <script src="./javascript/main.js"></script>
     <script src="./javascript/game.js"></script>  
