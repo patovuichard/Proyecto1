@@ -1,11 +1,11 @@
 // variables globales:
-let startBtnDOM = document.querySelector("#start-btn");
-let startGameDOM = document.querySelector("#inicio");
-let canvas = document.querySelector("#mi-canvas");
+const startBtnDOM = document.querySelector("#start-btn");
+const startGameDOM = document.querySelector("#inicio");
+const canvas = document.querySelector("#mi-canvas");
 let ctx = canvas.getContext("2d");
-let resetBtnDOM = document.querySelector("#restart-btn");
-let resetGameDOM = document.querySelector("#reinicio")
-let pauseDOM = document.querySelector("#pause-btn");
+const resetBtnDOM = document.querySelector("#restart-btn");
+const resetGameDOM = document.querySelector("#reinicio")
+const pauseDOM = document.querySelector("#pause-btn");
 
 
 
@@ -26,6 +26,8 @@ const Inicio = () => {
 
 const movimientoSurfer = (event) => {
     if (event.code === "ArrowUp" && (game.surfer.y + game.surfer.h) > 185) {
+        // this.posicion = "up";
+        game.surfer.posicion = "up";
         game.surfer.arribaSurfer();
     } else if (event.code === "ArrowDown" && (game.surfer.y + game.surfer.h) < canvas.height) {
         game.surfer.abajoSurfer();
