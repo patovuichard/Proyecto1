@@ -9,12 +9,12 @@ class Estrella {
         this.estrella.src = "./images/star1.png"
     }
     
-    drawEstrella = () => {
-    ctx.drawImage(this.estrella, this.x, this.y, this.w, this.h);
+    drawEstrella = (frame) => {
+        if (frame % 15 === 0) {
+            this.estrella.src = "./images/star1.png"
+        } else if (frame % 10 === 0) {
+            this.estrella.src = "./images/star2.png"
+        }
+        ctx.drawImage(this.estrella, this.x, this.y, this.w, this.h);
     }
 }
-        // if (this.frames % 10 === 0) {
-        //     this.estrella.src = "./images/star1.png"
-        // } else if (this.frames % 15 === 0) {
-        //     this.estrella.src = "./images/star2.png"
-        // }

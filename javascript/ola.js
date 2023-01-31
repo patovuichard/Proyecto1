@@ -2,8 +2,8 @@ class Ola {
     constructor(posX, posY, olaDerecha) {
         this.x = posX;
         this.y = posY;
-        this.w = 150;
-        this.h = 150;
+        this.w = 120;
+        this.h = 100;
         this.speed = 5;
 
         this.ola = new Image();

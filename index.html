@@ -5,6 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="./styles/style.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <title>Surfer Boy</title>
   </head>
   <body>
@@ -15,12 +16,20 @@
       <div id="inicio" class="contenedor">
         <img src="./images/bg1.jpeg" width="800" alt="Inicio">
         <button id="start-btn">Comienza a jugar!</button>
+        <button class="mute-btn">
+          <i class="material-icons">volume_mute</i>
+          <!-- <i class="material-icons">audiotrack</i> -->
+        </button>
       </div>
           
       <!-- Pantalla de juego -->
       <div id="juego" class="contenedor">
         <canvas id="mi-canvas" width="800" height="600"></canvas>
         <button id="pause-btn">Pause</button>
+        <button class="mute-btn">
+          <i class="material-icons">volume_mute</i>
+          <!-- <i class="material-icons">audiotrack</i> -->
+        </button>
       </div>
       
       <!-- Pantalla de reinicio -->
@@ -31,17 +40,7 @@
       
     </div>
 
-    <!-- <audio >
-
-    </audio> -->
-
-    <audio controls autoplay>
-      <source src="./audio/Surfin_Bird.mp3" type="audio/mpeg">
-      <source src="../audio/hell-yeah.mp3" type="audio/mpeg">
-      <source src="../audio/yeah.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-    </audio>
-
+    <!-- Scripts -->
     <script src="./javascript/main.js"></script>
     <script src="./javascript/game.js"></script>  
     <script src="./javascript/surfer.js"></script>

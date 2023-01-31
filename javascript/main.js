@@ -7,6 +7,11 @@ let ctx = canvas.getContext("2d");
 const resetBtnDOM = document.querySelector("#restart-btn");
 const resetGameDOM = document.querySelector("#reinicio")
 const pauseDOM = document.querySelector("#pause-btn");
+const songElement = new Audio("./audio/Surfin_Bird.mp3");
+const muteSongDOM = document.querySelector(".mute-btn")
+const audioStarElement = new Audio("./audio/hell-yeah.mp3");
+const audioSharkElement = new Audio("./audio/eating-sound-effect.mp3");
+const audioWaveElement = new Audio("./audio/yeah.mp3")
 
 
 
@@ -16,6 +21,11 @@ const Inicio = () => {
     startGameDOM.style.display = "none";
     resetGameDOM.style.display  = "none";
     gameDOM.style.display = "flex";
+
+    // musica para el juego
+    songElement.play();
+    songElement.volume = 0.05;
+    songElement.loop = true;
 
     // creo objeto de la clase game
     game = new Game();
@@ -40,6 +50,10 @@ const movimientoSurfer = (event) => {
     }
 }
 
+const muteSong = () => {
+    songElement.muted = true;
+    console.log(songElement.muted)
+}
 
 
 // ActiveListeners:
@@ -49,8 +63,6 @@ resetBtnDOM.addEventListener("click", () => {
     if (game.juegoTerminado === true) {
         game.juegoTerminado = false;
         game.estaJugando = false;
-        // startBtnDOM.style.display = "block";
-        // startGameDOM.style.display = "block";
         Inicio();
     }
 })
@@ -62,3 +74,4 @@ pauseDOM.addEventListener("click", () => {
         game.gameLoop();
     }
 })
+muteSongDOM.addEventListener("click", muteSong)

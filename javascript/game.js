@@ -25,6 +25,7 @@ class Game {
 
     // Metodos:
 
+    // CANVAS:
     clearCanvas = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
@@ -33,6 +34,8 @@ class Game {
         ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height);
     }
 
+
+    // TIBURON:
     tiburonAparece = () => {
         if (this.tiburonArrDerecha.length === 0 || this.frames % 240 === 0) {
             let randomPosY = Math.random() * (600)
@@ -61,11 +64,16 @@ class Game {
                 eachTiburon.x < this.surfer.x + this.surfer.w &&
                 eachTiburon.x + eachTiburon.w > this.surfer.x &&
                 eachTiburon.y < this.surfer.y + this.surfer.h &&
-                eachTiburon.h + eachTiburon.y > this.surfer.y
+                eachTiburon.h + eachTiburon.y > this.surfer.y &&
+                this.surfer.x > 0
                 )
                 {
-                    // this.gameOver();
-                    this.surfer.energia -= 50;
+                    this.tiburonArrDerecha.shift();
+                    this.surfer.energia -= 3333;
+                    audioSharkElement.play();
+                    audioSharkElement.volume = 0.5;
+                    this.surfer.izquierdaSurfer();
+                    this.surfer.izquierdaSurfer();
                 }
         })
         this.tiburonArrIzquierda.forEach ((eachTiburon)=> {
@@ -73,15 +81,22 @@ class Game {
                 eachTiburon.x < this.surfer.x + this.surfer.w &&
                 eachTiburon.x + eachTiburon.w > this.surfer.x &&
                 eachTiburon.y < this.surfer.y + this.surfer.h &&
-                eachTiburon.h + eachTiburon.y > this.surfer.y
+                eachTiburon.h + eachTiburon.y > this.surfer.y &&
+                this.surfer.x + this.surfer.w < canvas.width
                 )
                 {
-                    // this.gameOver();
-                    this.surfer.energia -= 50;
+                    this.tiburonArrIzquierda.shift();
+                    this.surfer.energia -= 3333;
+                    audioSharkElement.play();
+                    audioSharkElement.volume = 0.5;
+                    this.surfer.derechaSurfer();
+                    this.surfer.derechaSurfer();
                 }
         })
     }
 
+
+    // ESTRELLA:
     estrellaAparece = () => {
         if (this.frames % 360 === 0) {
             let randomPosX = Math.random() * (800);
@@ -105,11 +120,16 @@ class Game {
                 eachEstrella.h + eachEstrella.y > this.surfer.y &&
                 this.surfer.energia < 9980)
                 {
-                    this.surfer.energia += 30;
+                    audioStarElement.play();
+                    audioStarElement.volume = 0.5;
+                    this.surfer.energia += 2000;
+                    this.estrellaArr.shift();
                 }
         })
     }
 
+
+    // SURFER:
     checkEnergiaSurfer =() => {
         // console.log(this.surfer.energia)
         if (this.frames % 60 === 0) {
@@ -121,6 +141,8 @@ class Game {
         }
     }
 
+
+    // OLA:
     olaAparece = () => {
         if (this.olaArrDerecha.length === 0 || this.frames % 180 === 0) {
             let randomPosY = Math.random() * (600)
@@ -150,26 +172,36 @@ class Game {
                 eachOla.x + eachOla.w > this.surfer.x &&
                 eachOla.y < this.surfer.y + this.surfer.h &&
                 eachOla.h + eachOla.y > this.surfer.y &&
-                this.surfer.energia < 9990
+                this.surfer.energia < 9990 &&
+                this.surfer.x > 0
                 )
                 {
-                    this.surfer.energia += 10;
+                    audioWaveElement.play();
+                    audioWaveElement.volume = 0.5;
+                    this.surfer.energia += 1;
+                    this.surfer.izquierdaSurfer();
                 }
-        })
-        this.olaArrIzquierda.forEach ((eachOla)=> {
-            if (
-                eachOla.x < this.surfer.x + this.surfer.w &&
-                eachOla.x + eachOla.w > this.surfer.x &&
-                eachOla.y < this.surfer.y + this.surfer.h &&
-                eachOla.h + eachOla.y > this.surfer.y &&
-                this.surfer.energia < 9990
+            })
+            this.olaArrIzquierda.forEach ((eachOla)=> {
+                if (
+                    eachOla.x < this.surfer.x + this.surfer.w &&
+                    eachOla.x + eachOla.w > this.surfer.x &&
+                    eachOla.y < this.surfer.y + this.surfer.h &&
+                    eachOla.h + eachOla.y > this.surfer.y &&
+                    this.surfer.energia < 9990 &&
+                    this.surfer.x + this.surfer.w < canvas.width
                 )
                 {
-                    this.surfer.energia += 10;
+                    audioWaveElement.play();
+                    audioWaveElement.volume = 0.5;
+                    this.surfer.energia += 1;
+                    this.surfer.derechaSurfer();
                 }
         })
     }
-        
+    
+
+    // GAME OVER:
     gameOver = () => {
         // 1. Detener la recursion
         this.estaJugando = false;
@@ -183,6 +215,7 @@ class Game {
     }
 
 
+    // BUCLE DEL JUEGO:
     gameLoop = () => {
         this.frames++;
 
@@ -228,7 +261,7 @@ class Game {
         })
         
         this.estrellaArr.forEach((eachEstrella) => {
-            eachEstrella.drawEstrella();
+            eachEstrella.drawEstrella(this.frames);
         })
 
         this.olaArrDerecha.forEach ((eachOla) => {
