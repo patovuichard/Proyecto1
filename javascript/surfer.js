@@ -5,7 +5,7 @@ class Surfer {
         this.y = 260;
         this.w = 60;
         this.h = 60;
-        this.speed = 40;
+        this.speed = 20;
         this.energia = 10000;
 
         this.posicion = posicion;
@@ -20,25 +20,25 @@ class Surfer {
 
     arribaSurfer = () => {
         this.y -= this.speed;
-        // this.posicion = "up";
+        
         this.personaje.src = "./images/surferUp.png"
     }
 
     abajoSurfer = () => {
         this.y += this.speed;
-        // this.posicion = "down";
+        
         this.personaje.src = "./images/surferDown.png"
     }
 
     izquierdaSurfer = () => {
         this.x -= this.speed;
-        // this.posicion = "left";
+        
         this.personaje.src = "./images/surferLeft.png"
     }
 
     derechaSurfer = () => {
         this.x += this.speed;
-        // this.posicion = "right";
+        
         this.personaje.src = "./images/surferRight.png"
     }
 

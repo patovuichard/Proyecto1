@@ -8,7 +8,8 @@ const resetBtnDOM = document.querySelector("#restart-btn");
 const resetGameDOM = document.querySelector("#reinicio")
 const pauseDOM = document.querySelector("#pause-btn");
 const songElement = new Audio("./audio/Surfin_Bird.mp3");
-const muteSongDOM = document.querySelector(".mute-btn")
+const muteSongDOM = document.querySelector(".mute-btn");
+const iconSongDOM = document.querySelector("#icon");
 const audioStarElement = new Audio("./audio/hell-yeah.mp3");
 const audioSharkElement = new Audio("./audio/eating-sound-effect.mp3");
 const audioWaveElement = new Audio("./audio/yeah.mp3")
@@ -51,9 +52,15 @@ const movimientoSurfer = (event) => {
 }
 
 const muteSong = () => {
-    songElement.muted = true;
-    console.log(songElement.muted)
-}
+    if (songElement.muted === false) {
+        songElement.muted = true;
+        iconSongDOM.innerHTML = "audiotrack";
+    } else {
+        songElement.muted = false;
+        iconSongDOM.innerHTML = "volume_mute";
+    }
+}    
+
 
 
 // ActiveListeners:
@@ -74,4 +81,4 @@ pauseDOM.addEventListener("click", () => {
         game.gameLoop();
     }
 })
-muteSongDOM.addEventListener("click", muteSong)
+muteSongDOM.addEventListener("click", muteSong);

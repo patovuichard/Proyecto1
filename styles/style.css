@@ -38,7 +38,7 @@ body {
     border-radius: 20px; 
 }
 
-.mute-btn {
+.mute-btn, .unmute-btn {
     position: absolute;
     top: 45px;
     right: 450px;
