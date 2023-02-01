@@ -35,7 +35,7 @@ const Inicio = () => {
 
     // creo objeto de la clase game
     game = new Game();
-
+    
     // inicio el juego, invocando el metodo de la clase
     game.gameLoop();
 }
@@ -77,6 +77,7 @@ const keyUp = (event) => {
         keyPressedRight = false;
     }
 }
+// console.log(keyPressedUp, keyPressedRight, keyPressedDown, keyPressedLeft)
 
 const muteSong = () => {
     if (songElement.muted === false) {

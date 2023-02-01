@@ -115,10 +115,10 @@ class Game {
         eachEstrella.x + eachEstrella.w > this.surfer.x &&
         eachEstrella.y < this.surfer.y + this.surfer.h &&
         eachEstrella.h + eachEstrella.y > this.surfer.y &&
-        this.surfer.energia < 9980
+        this.surfer.energia <= 8000
       ) {
         audioStarElement.play();
-        audioStarElement.volume = 0.3;
+        audioStarElement.volume = 0.2;
         this.surfer.energia += 2000;
         this.estrellaArr.shift();
       }
