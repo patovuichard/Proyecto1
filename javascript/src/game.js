@@ -9,6 +9,8 @@ class Game {
     this.tiburon = new Tiburon();
     this.tiburonArrDerecha = [];
     this.tiburonArrIzquierda = [];
+    this.velocidadTiburon = 1;
+    this.velocidadAparicionTiburon = 600;
 
     this.estrella = new Estrella();
     this.estrellaArr = [];
@@ -19,6 +21,8 @@ class Game {
     this.contadorOla = 0;
 
     this.frames = 1;
+    this.segundos = 0;
+    this.minutos = 0;
 
     this.estaJugando = true;
     this.juegoTerminado = false;
@@ -37,14 +41,14 @@ class Game {
 
   // TIBURON:
   tiburonAparece = () => {
-    if (this.tiburonArrDerecha.length === 0 || this.frames % 240 === 0) {
+    if (this.tiburonArrDerecha.length === 0 || this.frames % (this.velocidadAparicionTiburon) === 0) {
       let randomPosY = Math.random() * 600;
-      let sharkD = new Tiburon(canvas.width, randomPosY, true);
+      let sharkD = new Tiburon(canvas.width, randomPosY, this.velocidadTiburon, true);
       this.tiburonArrDerecha.push(sharkD);
     }
-    if (this.tiburonArrIzquierda.length === 0 || this.frames % 240 === 0) {
+    if (this.tiburonArrIzquierda.length === 0 || this.frames % (this.velocidadAparicionTiburon) === 0) {
       let randomPosY = Math.random() * 600;
-      let sharkI = new Tiburon(0, randomPosY, false);
+      let sharkI = new Tiburon(0, randomPosY, this.velocidadTiburon, false);
       this.tiburonArrIzquierda.push(sharkI);
     }
   };
@@ -95,7 +99,7 @@ class Game {
 
   // ESTRELLA:
   estrellaAparece = () => {
-    if (this.frames % 360 === 0) {
+    if (this.frames % 720 === 0) {
       let randomPosX = Math.random() * 800;
       let randomPosY = Math.random() * 600;
       let estrella = new Estrella(randomPosX, randomPosY);
@@ -104,7 +108,7 @@ class Game {
   };
 
   estrellaDesaparece = () => {
-    if (this.frames % 480 === 0) {
+    if (this.frames % 359 === 0) {
       this.estrellaArr.shift();
     }
   };
@@ -197,11 +201,38 @@ class Game {
 
   // AUMENTAR LA DIFICULTAD:
   levelUp = () => {
-    if (this.contadorOla > 0 && this.contadorOla % 100 === 0) {
-      this.tiburon.speed += 20;
+    if (this.contadorOla > 250 && this.contadorOla < 500) {
+      this.velocidadAparicionTiburon = 480;
+      this.velocidadTiburon = 2;
+    } else if (this.contadorOla >= 500 && this.contadorOla < 750) {
+      this.velocidadAparicionTiburon = 360;
+      this.velocidadTiburon = 3;
+    } else if (this.contadorOla >= 750 && this.contadorOla < 1000) {
+      this.velocidadAparicionTiburon = 240;
+      this.velocidadTiburon = 4;
+    } else if (this.contadorOla >= 1000) {
+      this.velocidadAparicionTiburon = 120;
+      this.velocidadTiburon = 5;
     }
   }
   
+  // RELOJ:
+  timer = () => {
+    if (this.segundos % 60 === 0 && this.segundos > 59) {
+      this.segundos = 0;
+      this.minutos++
+    }
+    if (this.frames % 60 === 0 && this.frames > 0) {
+      this.segundos++
+    }
+    if (this.segundos < 10){
+      ctx.font = "25px sans-serif";
+      ctx.fillText(`Tiempo: ${this.minutos}:0${this.segundos}`, 440, 60);
+    } else {
+      ctx.font = "25px sans-serif";
+      ctx.fillText(`Tiempo: ${this.minutos}:${this.segundos}`, 440, 60);
+    }
+  }
 
   // GAME OVER:
   gameOver = () => {
@@ -278,8 +309,9 @@ class Game {
 
     this.levelUp();
 
-    console.log(this.tiburon.speed)
+    this.timer();
 
+    // console.log(this.contadorOla, this.velocidadAparicionTiburon)
     // Recursion y control
     if (this.estaJugando) {
       requestAnimationFrame(this.gameLoop);

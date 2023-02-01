@@ -1,11 +1,11 @@
 class Tiburon {
     // Propiedades
-    constructor(posX, posY, tiburonDerecha) {
+    constructor(posX, posY, speed, tiburonDerecha) {
         this.x = posX;
         this.y = posY;
         this.w = 70;
         this.h = 70;
-        this.speed = 3;
+        this.speed = speed;
 
         this.enemigo = new Image();
         if (tiburonDerecha) {
