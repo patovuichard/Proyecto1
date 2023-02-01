@@ -25,4 +25,9 @@ class Ola {
     moveOlaIzquierda = () => {
         this.x += this.speed;
     }
+
+    drawContadorOla = () => {
+        ctx.font = "25px sans-serif";
+        ctx.fillText(`Score: ${game.contadorOla * 100}`, 350, 60);
+    }
 }

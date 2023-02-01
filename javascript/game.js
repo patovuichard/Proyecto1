@@ -16,6 +16,7 @@ class Game {
     this.ola = new Ola();
     this.olaArrDerecha = [];
     this.olaArrIzquierda = [];
+    this.contadorOla = 0;
 
     this.frames = 1;
 
@@ -128,8 +129,8 @@ class Game {
   // SURFER:
   checkEnergiaSurfer = () => {
     // console.log(this.surfer.energia)
-    if (this.frames % 60 === 0) {
-      this.surfer.energia -= 10;
+    if (this.frames % 120 === 0) {
+      this.surfer.energia -= 50;
     }
     if (this.surfer.energia <= 0) {
       this.gameOver();
@@ -173,6 +174,7 @@ class Game {
         audioWaveElement.volume = 0.5;
         this.surfer.energia += 1;
         this.surfer.izquierdaSurfer();
+        this.contadorOla++
       }
     });
     this.olaArrIzquierda.forEach((eachOla) => {
@@ -188,15 +190,25 @@ class Game {
         audioWaveElement.volume = 0.5;
         this.surfer.energia += 1;
         this.surfer.derechaSurfer();
+        this.contadorOla++
       }
     });
   };
+
+  // AUMENTAR LA DIFICULTAD:
+  levelUp = () => {
+    if (this.contadorOla > 0 && this.contadorOla % 100 === 0) {
+      this.tiburon.speed += 20;
+    }
+  }
+  
 
   // GAME OVER:
   gameOver = () => {
     // 1. Detener la recursion
     this.estaJugando = false;
     this.juegoTerminado = true;
+
 
     // 2. Ocultar el canvas
     gameDOM.style.display = "none";
@@ -262,6 +274,11 @@ class Game {
     });
 
     this.surfer.drawSurfer();
+    this.ola.drawContadorOla();
+
+    this.levelUp();
+
+    console.log(this.tiburon.speed)
 
     // Recursion y control
     if (this.estaJugando) {
