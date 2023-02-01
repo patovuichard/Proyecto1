@@ -8,9 +8,9 @@ class Ola {
 
         this.ola = new Image();
         if (olaDerecha) {
-            this.ola.src = "../images/waveD.png"
+            this.ola.src = "./images/waveD.png"
         } else (
-            this.ola.src = "../images/waveI.png"
+            this.ola.src = "./images/waveI.png"
         )
     }
 

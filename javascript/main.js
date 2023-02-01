@@ -14,6 +14,11 @@ const audioStarElement = new Audio("./audio/hell-yeah.mp3");
 const audioSharkElement = new Audio("./audio/eating-sound-effect.mp3");
 const audioWaveElement = new Audio("./audio/yeah.mp3")
 
+let keyPressedUp = false;
+let keyPressedDown = false;
+let keyPressedLeft = false;
+let keyPressedRight = false;
+
 
 
 // Metodos;
@@ -37,17 +42,39 @@ const Inicio = () => {
 
 const movimientoSurfer = (event) => {
     if (event.code === "ArrowUp" && (game.surfer.y + game.surfer.h) > 185) {
+        keyPressedUp = true;
         game.surfer.posicion = "up";
         game.surfer.arribaSurfer();
-    } else if (event.code === "ArrowDown" && (game.surfer.y + game.surfer.h) < canvas.height) {
+    }
+    if (event.code === "ArrowDown" && (game.surfer.y + game.surfer.h) < canvas.height) {
+        keyPressedDown = true;
         game.surfer.posicion = "down";
         game.surfer.abajoSurfer();
-    } else if (event.code === "ArrowLeft" && game.surfer.x > 0) {
+    }
+    if (event.code === "ArrowLeft" && game.surfer.x > 0) {
+        keyPressedLeft = true;
         game.surfer.posicion = "left";
         game.surfer.izquierdaSurfer();
-    } else if (event.code === "ArrowRight" && (game.surfer.x + game.surfer.w) < canvas.width) {
+    }
+    if (event.code === "ArrowRight" && (game.surfer.x + game.surfer.w) < canvas.width) {
+        keyPressedRight = true;
         game.surfer.posicion = "right";
         game.surfer.derechaSurfer();
+    }
+}
+
+const keyUp = (event) => {
+    if (event.code === "ArrowUp") {
+        keyPressedUp = false;
+    }
+    if (event.code === "ArrowDown") {
+        keyPressedDown = false;
+    }
+    if (event.code === "ArrowLeft") {
+        keyPressedLeft = false;
+    }
+    if (event.code === "ArrowRight") {
+        keyPressedRight = false;
     }
 }
 
@@ -66,6 +93,7 @@ const muteSong = () => {
 // ActiveListeners:
 startBtnDOM.addEventListener("click", Inicio)
 window.addEventListener("keydown", movimientoSurfer)
+window.addEventListener("keyup", keyUp)
 resetBtnDOM.addEventListener("click", () => {
     if (game.juegoTerminado === true) {
         game.juegoTerminado = false;
