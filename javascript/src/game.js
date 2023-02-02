@@ -42,13 +42,13 @@ class Game {
   // TIBURON:
   tiburonAparece = () => {
     if (this.tiburonArrDerecha.length === 0 || this.frames % (this.velocidadAparicionTiburon) === 0) {
-      let randomPosY = Math.random() * 600;
-      let sharkD = new Tiburon(canvas.width, randomPosY, this.velocidadTiburon, true);
+      let randomPosY = Math.random() * 500;
+      let sharkD = new Tiburon(canvas.width, (randomPosY + 100), this.velocidadTiburon, true);
       this.tiburonArrDerecha.push(sharkD);
     }
     if (this.tiburonArrIzquierda.length === 0 || this.frames % (this.velocidadAparicionTiburon) === 0) {
-      let randomPosY = Math.random() * 600;
-      let sharkI = new Tiburon(0, randomPosY, this.velocidadTiburon, false);
+      let randomPosY = Math.random() * 500;
+      let sharkI = new Tiburon(0, (randomPosY + 100), this.velocidadTiburon, false);
       this.tiburonArrIzquierda.push(sharkI);
     }
   };
@@ -101,8 +101,8 @@ class Game {
   estrellaAparece = () => {
     if (this.frames % 720 === 0) {
       let randomPosX = Math.random() * 800;
-      let randomPosY = Math.random() * 600;
-      let estrella = new Estrella(randomPosX, randomPosY);
+      let randomPosY = Math.random() * 500;
+      let estrella = new Estrella(randomPosX, (randomPosY + 100));
       this.estrellaArr.push(estrella);
     }
   };
@@ -132,7 +132,6 @@ class Game {
 
   // SURFER:
   checkEnergiaSurfer = () => {
-    // console.log(this.surfer.energia)
     if (this.frames % 120 === 0) {
       this.surfer.energia -= 50;
     }
@@ -144,13 +143,13 @@ class Game {
   // OLA:
   olaAparece = () => {
     if (this.olaArrDerecha.length === 0 || this.frames % 180 === 0) {
-      let randomPosY = Math.random() * 600;
-      let olaD = new Ola(canvas.width, randomPosY, true);
+      let randomPosY = Math.random() * 500;
+      let olaD = new Ola(canvas.width, (randomPosY + 100), true);
       this.olaArrDerecha.push(olaD);
     }
     if (this.olaArrIzquierda.length === 0 || this.frames % 180 === 0) {
-      let randomPosY = Math.random() * 600;
-      let olaI = new Ola(0, randomPosY, false);
+      let randomPosY = Math.random() * 500;
+      let olaI = new Ola(0, (randomPosY + 100), false);
       this.olaArrIzquierda.push(olaI);
     }
   };
