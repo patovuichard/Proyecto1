@@ -22,16 +22,25 @@ let keyPressedRight = false;
 
 
 // Metodos;
-const Inicio = () => {
-    // elijo que pantalla necesito
+
+const gameScreen = () => {
     startGameDOM.style.display = "none";
     resetGameDOM.style.display  = "none";
     gameDOM.style.display = "flex";
+}
 
-    // musica para el juego
+const musicAutoPlay = () => {
     songElement.play();
     songElement.volume = 0.05;
     songElement.loop = true;
+}
+
+const Inicio = () => {
+    // elijo que pantalla necesito
+    gameScreen();
+
+    // musica para el juego
+    musicAutoPlay();
 
     // creo objeto de la clase game
     game = new Game();
@@ -77,7 +86,6 @@ const keyUp = (event) => {
         keyPressedRight = false;
     }
 }
-// console.log(keyPressedUp, keyPressedRight, keyPressedDown, keyPressedLeft)
 
 const muteSong = () => {
     if (songElement.muted === false) {
