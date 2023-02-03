@@ -162,5 +162,5 @@ Definition of the different states and their transition (transition functions)
 - URL for the project repo [Link Repo](https://github.com/patovuichard/Surfer-Boy) 
 - URL for the project deploy [Link Deploy](https://patovuichard.github.io/Surfer-Boy/)
 
-<!-- ### Slides -->
-<!-- [Link](www.your-url-here.com) -->
+### Slides
+- URls for the project presentation (slides) [Link Deploy](https://docs.google.com/presentation/d/10T9luAj3aii9N7Wr3EPPn5MG6GJ4OUXM6KmIZHxqiAQ/edit#slide=id.p)
